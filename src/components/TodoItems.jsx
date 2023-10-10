@@ -9,10 +9,10 @@ const styles = {
     textoTachado: "line-through",
 };
 
-const TodoItems = ({ todo, removeTodo, updateTodo }) => {
+const TodoItems = React.forwardRef(({ todo, removeTodo, updateTodo,...props },ref) => {
     const { id, title, completed } = todo;
     return (
-        <article className="flex gap-4  border-b border-b-gray-400  ">
+        <article {...props} ref={ref} className="flex gap-4  border-b border-b-gray-400  ">
             {/* <button className="inline-block h-5 w-5 rounded-full border-2 
             first-letter:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                 <IconCheck/>
@@ -38,6 +38,6 @@ const TodoItems = ({ todo, removeTodo, updateTodo }) => {
             </button>
         </article>
     );
-};
+})
 
 export default TodoItems;
